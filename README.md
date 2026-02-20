@@ -55,6 +55,10 @@ gh browse --repo Terpedia/terpedia-next settings/pages
 
 *Note: Some organizations disable “Deploy from a branch”; use Option 1 (GitHub Actions) instead.*
 
+### Custom domain: next.terpedia.com
+
+To serve the site at **https://next.terpedia.com**: (1) In **AWS Route 53**, add a CNAME record **next** → **terpedia.github.io** in the hosted zone for terpedia.com. (2) In repo **Settings → Pages**, set **Custom domain** to **next.terpedia.com** and save; optionally enable **Enforce HTTPS**. See **[docs/deploy-route53.md](docs/deploy-route53.md)** for step-by-step Route 53 and GitHub instructions.
+
 ## Run locally
 
 Open `index.html` in a browser, or use a local server:
