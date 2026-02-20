@@ -71,6 +71,7 @@ A phased plan to get terpedia.com up and running with the full feature set (Ency
 - **Terports:** Who writes them; workflow (draft → review → publish); where they live (CMS, DB, markdown in repo).
 - **Products (Terproduct):** Initial dataset (manual, partner feeds, scrape with legal review); ongoing who adds/edits and moderation.
 - **Podcasts:** Hosting (e.g. Buzzsprout, Transistor); where metadata and show notes live (CMS vs static).
+- **Patient records:** Stored on the user's device only (cookies or localStorage); no server persistence by default. Define record schema (notes, conditions, goals, products/strains used); export/delete supported.
 
 **Deliverable:** “Data & content sources” doc + content ownership matrix (who owns Encyclopedia vs Terports vs Products vs Podcasts).
 
@@ -295,6 +296,7 @@ A phased plan to get terpedia.com up and running with the full feature set (Ency
 - **Phase 8** (Tersona) needs Encyclopedia and ideally Terproduct + Feed so recommendations and personalization have content; entity Tersonae subscribe to RSS (e.g. PubMed, Google News).
 - **Phase 9** (Podcasts) can run in parallel with 7–8 if different owner; only needs nav and feed integration.
 - **Phase 10** runs in parallel from Phase 3 onward (performance, SEO, analytics) and continues after launch.
+- **Patient records** can be implemented as a client-only feature (cookies/localStorage) in parallel or after Foundation; no backend required for MVP; optional sync/backup if user opts in.
 
 ---
 

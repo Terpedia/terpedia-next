@@ -117,6 +117,18 @@ A working list of product features for [terpedia.com](https://terpedia.com). Ref
 
 ---
 
+## 9. Patient records
+
+**Maintain records about a patient (e.g. notes, conditions, products/strains used, goals). Ideally stored on the user’s device only.**
+
+- **Patient record** — Per-patient (or per-user) record: notes, conditions, goals, products or strains used, reactions, dates. Structure to be defined (e.g. free-form notes plus optional structured fields).
+- **Storage on the user’s platform** — Ideally stored **in cookies or local storage** (e.g. `localStorage`) on the user’s device so data does not leave the device by default. Cookies have size limits (~4KB per cookie); for larger records, use **localStorage** (same-origin, no automatic send with requests). Clear disclosure: “Stored only on this device.”
+- **Privacy-first** — No server-side persistence of patient data unless the user explicitly opts in (e.g. backup to account). Export and delete supported; user can clear site data to remove records.
+- **Use cases** — Caregivers or patients tracking what works, notes for a practitioner, or personal journal of strains/products and effects. Optional link to Tersona (e.g. “this patient prefers myrcene-dominant”) or to Rx (recipes tried).
+- **Multi-device** — If stored only client-side, records are per-browser/device unless the user exports and imports or opts into synced storage.
+
+---
+
 ## Summary Table
 
 | Feature | Purpose |
@@ -129,6 +141,7 @@ A working list of product features for [terpedia.com](https://terpedia.com). Ref
 | **Terproduct Database** | Searchable products tied to terpenes and strains; supports feed. |
 | **Podcasts** | Audio education with show notes and cross-links; support feed. |
 | **Rx (Recipes)** | Formulations: compounds/essential oils with volume or mass; fork and iterate; link to Encyclopedia/Terproduct. |
+| **Patient records** | Per-patient notes, conditions, goals, products/strains used; stored in cookies/localStorage on the user’s device (privacy-first). |
 
 ---
 
