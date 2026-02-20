@@ -56,12 +56,41 @@ This repo already contains a **CNAME** file with `next.terpedia.com` so GitHub k
 
 ---
 
-## Optional: AWS CLI
+## AWS CLI (dan@syzygyx.com)
 
-If you use the AWS CLI and have the hosted zone ID for **terpedia.com** (e.g. `Z1234567890ABC`):
+Use the **dan@syzygyx.com** AWS account (Terpedia.com stays on syzygyx) via profile **`dan`** (or set `AWS_PROFILE`).
+
+### Option A: Script (recommended)
+
+From the repo root:
 
 ```bash
-aws route53 change-resource-record-sets --hosted-zone-id Z1234567890ABC --change-batch '{
+export AWS_PROFILE=dan
+./scripts/setup-route53-next.sh
+```
+
+Or if your profile name is different (e.g. `syzygyx`):
+
+```bash
+AWS_PROFILE=syzygyx ./scripts/setup-route53-next.sh
+```
+
+The script finds the **terpedia.com** hosted zone and creates the CNAME **next.terpedia.com** → **terpedia.github.io**. To skip the lookup, set the zone ID:
+
+```bash
+export AWS_PROFILE=dan
+export HOSTED_ZONE_ID=Z1234567890ABC
+./scripts/setup-route53-next.sh
+```
+
+### Option B: One-off command
+
+If you have the hosted zone ID for **terpedia.com** (e.g. `Z1234567890ABC`):
+
+```bash
+aws route53 change-resource-record-sets --profile dan \
+  --hosted-zone-id Z1234567890ABC \
+  --change-batch '{
   "Changes": [{
     "Action": "UPSERT",
     "ResourceRecordSet": {
@@ -74,4 +103,4 @@ aws route53 change-resource-record-sets --hosted-zone-id Z1234567890ABC --change
 }'
 ```
 
-Replace `Z1234567890ABC` with your hosted zone ID (Route 53 → Hosted zones → terpedia.com → Hosted zone ID).
+Replace `Z1234567890ABC` with your hosted zone ID (Route 53 → Hosted zones → terpedia.com → Hosted zone ID). Use `--profile dan` for the dan@syzygyx.com (syzygyx) account.
