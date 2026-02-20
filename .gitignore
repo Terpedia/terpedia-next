@@ -1,0 +1,4 @@
+.DS_Store
+.whisper
+*.log
+node_modules/

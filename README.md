@@ -12,7 +12,7 @@ A static prototype for [terpedia.com](https://terpedia.com), built for **GitHub 
 1. In the repo: **Settings → Pages**
 2. Under **Build and deployment**, set **Source** to **Deploy from a branch**
 3. Branch: `main` (or `master`), folder: **/ (root)**
-4. Save. The site will be at `https://terpedia.github.io/<repo-name>/` or your custom domain.
+4. Save. The site will be at **https://terpedia.github.io/terpedia-next/** (or your custom domain).
 
 ## Run locally
 
