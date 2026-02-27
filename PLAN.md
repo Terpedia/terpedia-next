@@ -11,7 +11,7 @@ A phased plan to get terpedia.com up and running with the full feature set (Ency
 | **Brand / domain** | terpedia.com exists; positioning as “Terpene Knowledge Hub” and Apothyx (Monument, CO). |
 | **Existing product** | Live site with strain/terpene data, TerpeneQueen; 24k+ strains, 170k+ terpenes referenced. |
 | **TerpediaNext** | Static prototype on GitHub Pages ([Terpedia/terpedia-next](https://github.com/Terpedia/terpedia-next)); landing page + FEATURES.md. |
-| **Hosting** | Prototype: GitHub Pages. Production terpedia.com: confirm (e.g. SiteGround, Vercel, or other). |
+| **Hosting** | Prototype: GitHub Pages (next.terpedia.com). **Migrating to AWS** for app, API, and production. |
 
 **Assumption:** Plan can either (a) evolve the current terpedia.com stack, or (b) build a new front-end/back-end and eventually point terpedia.com at it. Decisions in Phase 0 will lock this.
 
@@ -57,11 +57,11 @@ A phased plan to get terpedia.com up and running with the full feature set (Ency
 - **Option A — Evolve current stack**  
   If terpedia.com runs WordPress (e.g. on SiteGround): enhance with custom themes, plugins, and possibly a headless front-end for specific sections. Reuse existing DB and content.
 
-- **Option B — New app + headless CMS or API**  
-  Build a modern front-end (e.g. Next.js, Astro) on Vercel/Netlify; use a CMS (Strapi, Sanity, Contentful) or existing API for terpenes/strains/products. Best if you want full control over UX and plan heavy personalization (Tersona, Feed).
+- **Option B — New app on AWS**  
+  Build a modern front-end and API on **AWS** (e.g. S3 + CloudFront for static, API Gateway + Lambda or ECS for API; or Amplify). Use a CMS or existing API for terpenes/strains/products. Aligns with migration to AWS.
 
 - **Option C — Hybrid**  
-  Keep marketing/static on current host; run app subdomain or paths (e.g. app.terpedia.com or terpedia.com/feed) for feed, Encyclopedia, Terports, Terproduct, Tersona.
+  Keep next.terpedia.com on GitHub Pages for now; run app and API on **AWS** (app.terpedia.com, api.terpedia.com). See [docs/migrating-to-aws.md](docs/migrating-to-aws.md).
 
 **Deliverable:** One-page “Tech stack & hosting” doc: front-end, back-end/CMS/API, hosting, CI/CD.
 

@@ -2,9 +2,11 @@
 
 Use AWS Route 53 to point the subdomain **next.terpedia.com** at the GitHub Pages site for this repo.
 
+**If https://next.terpedia.com returns 404:** (1) Ensure **terpedia.com** DNS is in the right AWS account and the **next** CNAME exists (see below). (2) In GitHub repo **Settings → Pages**, set **Custom domain** to **next.terpedia.com**. (3) Ensure GitHub Pages is enabled (e.g. Source: GitHub Actions). See [move-terpedia-domain-to-terpedia-aws.md](move-terpedia-domain-to-terpedia-aws.md) if you’re moving the domain to Terpedia AWS.
+
 ## Prerequisites
 
-- **terpedia.com** (or the parent domain) is hosted in **Route 53** (you have a hosted zone for it).
+- **terpedia.com** is in **Terpedia AWS** (Route 53 hosted zone). If it’s still in another account (e.g. syzygyx), see [move-terpedia-domain-to-terpedia-aws.md](move-terpedia-domain-to-terpedia-aws.md).
 - **GitHub Pages** is enabled for this repo and the site works at **https://terpedia.github.io/terpedia-next/**.
 
 ---
@@ -56,39 +58,33 @@ This repo already contains a **CNAME** file with `next.terpedia.com` so GitHub k
 
 ---
 
-## AWS CLI (dan@syzygyx.com)
+## AWS CLI (Terpedia AWS)
 
-Use the **dan@syzygyx.com** AWS account (Terpedia.com stays on syzygyx) via profile **`dan`** (or set `AWS_PROFILE`).
+Use the **Terpedia** AWS account. The script defaults to profile **`terpedia`**. If the domain was previously in another account (e.g. dan-syzygyx), migrate it first: see [move-terpedia-domain-to-terpedia-aws.md](move-terpedia-domain-to-terpedia-aws.md).
 
 ### Option A: Script (recommended)
 
 From the repo root:
 
 ```bash
-export AWS_PROFILE=dan
+export AWS_PROFILE=terpedia
 ./scripts/setup-route53-next.sh
 ```
 
-Or if your profile name is different (e.g. `syzygyx`):
+The script finds the **terpedia.com** hosted zone in the Terpedia account and creates the CNAME **next.terpedia.com** → **terpedia.github.io**. To skip the lookup, set the zone ID:
 
 ```bash
-AWS_PROFILE=syzygyx ./scripts/setup-route53-next.sh
-```
-
-The script finds the **terpedia.com** hosted zone and creates the CNAME **next.terpedia.com** → **terpedia.github.io**. To skip the lookup, set the zone ID:
-
-```bash
-export AWS_PROFILE=dan
+export AWS_PROFILE=terpedia
 export HOSTED_ZONE_ID=Z1234567890ABC
 ./scripts/setup-route53-next.sh
 ```
 
 ### Option B: One-off command
 
-If you have the hosted zone ID for **terpedia.com** (e.g. `Z1234567890ABC`):
+If you have the hosted zone ID for **terpedia.com** in Terpedia AWS (e.g. `Z1234567890ABC`):
 
 ```bash
-aws route53 change-resource-record-sets --profile dan \
+aws route53 change-resource-record-sets --profile terpedia \
   --hosted-zone-id Z1234567890ABC \
   --change-batch '{
   "Changes": [{
@@ -103,4 +99,4 @@ aws route53 change-resource-record-sets --profile dan \
 }'
 ```
 
-Replace `Z1234567890ABC` with your hosted zone ID (Route 53 → Hosted zones → terpedia.com → Hosted zone ID). Use `--profile dan` for the dan@syzygyx.com (syzygyx) account.
+Replace `Z1234567890ABC` with the hosted zone ID in Terpedia AWS (Route 53 → Hosted zones → terpedia.com).

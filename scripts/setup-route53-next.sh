@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 # Create Route 53 CNAME record: next.terpedia.com -> terpedia.github.io
-# Uses AWS profile for dan@syzygyx.com (set AWS_PROFILE or pass --profile).
+# Uses Terpedia AWS account (set AWS_PROFILE=terpedia, or configure profile "terpedia").
 set -e
 
-PROFILE="${AWS_PROFILE:-dan}"
+PROFILE="${AWS_PROFILE:-terpedia}"
 DOMAIN="terpedia.com"
 SUBDOMAIN="next.terpedia.com"
 TARGET="terpedia.github.io"

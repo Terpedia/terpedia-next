@@ -7,6 +7,8 @@ A static prototype for [terpedia.com](https://terpedia.com), built for **GitHub 
 - **Terpedia** — Your Terpene Knowledge Hub: cannabis strains, terpene library, and evidence-based terpene science.
 - Single-page landing with hero, feature cards, and about section.
 - **[FEATURES.md](FEATURES.md)** — Product feature list: Encyclopedia, Terports, Terproduct Database, Tersona, Podcasts, Activity Feed.
+- **[docs/features-and-subdomains.md](docs/features-and-subdomains.md)** — Planned features and subdomains (next, app, api, etc.).
+- **[docs/migrating-to-aws.md](docs/migrating-to-aws.md)** — Migration to AWS: hosting, services, phases. Includes **AWS HealthOmics** and **NVIDIA BioNeMo** for terpenes; see [docs/bionemo-terpenes.md](docs/bionemo-terpenes.md).
 - **[PLAN.md](PLAN.md)** — Comprehensive launch plan: phases, tech decisions, data, timeline, and next steps.
 
 ## GitHub Pages
@@ -57,7 +59,7 @@ gh browse --repo Terpedia/terpedia-next settings/pages
 
 ### Custom domain: next.terpedia.com
 
-To serve the site at **https://next.terpedia.com**: (1) In **AWS Route 53**, add a CNAME record **next** → **terpedia.github.io** in the hosted zone for terpedia.com. (2) In repo **Settings → Pages**, set **Custom domain** to **next.terpedia.com** and save; optionally enable **Enforce HTTPS**. See **[docs/deploy-route53.md](docs/deploy-route53.md)** for step-by-step Route 53 and GitHub instructions.
+To serve the site at **https://next.terpedia.com**: (1) In **AWS Route 53** (Terpedia AWS), add a CNAME record **next** → **terpedia.github.io** in the hosted zone for terpedia.com. (2) In repo **Settings → Pages**, set **Custom domain** to **next.terpedia.com** and save; optionally enable **Enforce HTTPS**. See **[docs/deploy-route53.md](docs/deploy-route53.md)** for Route 53 and GitHub steps. To **move terpedia.com** into Terpedia AWS from another account, see **[docs/move-terpedia-domain-to-terpedia-aws.md](docs/move-terpedia-domain-to-terpedia-aws.md)**.
 
 ## Run locally
 
